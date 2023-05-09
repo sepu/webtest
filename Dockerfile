@@ -7,6 +7,6 @@ apt update \
 && apt upgrade -y \ 
 && apt install apache2 -y
 
-COPY html /var/www/html
+COPY . /var/www/html
 
 CMD apachectl -D FOREGROUND
