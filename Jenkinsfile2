@@ -6,6 +6,7 @@ pipeline {
 	JAVA_HOME = "/usr/lib/jvm/java-11-openjdk-amd64"
 	JAVA_BIN = '$JAVA_HOME/bin'	
     }
+    tool name: 'gradle-8.1', type: 'gradle'
     stages {
         stage('Levanta Web') {
             steps {
@@ -24,10 +25,8 @@ pipeline {
 	stage('Descarga y lanza selenium tests'){
 	    steps {
 		checkout scmGit(branches: [[name: '*/main']], extensions: [], userRemoteConfigs: [[url: 'https://github.com/sepu/testwebtest.git']])
-		withEnv(['PATH+EXTRA=$JAVA_BIN:$GRADLE_BIN']) {
-			sh 'gradle clean'
-                	sh 'gradle build'
-    		}		
+		sh 'gradle clean'
+                sh 'gradle build'		
 	    }
         }
      }
