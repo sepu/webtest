@@ -15,6 +15,11 @@ pipeline {
 		sh 'docker run --name jmeter -i -v $JENKINS_HOME/techday/jmeter/test:/home/jmeter/apache-jmeter-5.4.3/test jmeter/docker:5.4.3'
 	    }
 	}
+	stage('Descarga selenium testsr'){
+	    steps {
+		checkout scmGit(branches: [[name: '*/main']], extensions: [], userRemoteConfigs: [[url: 'https://github.com/sepu/testwebtest.git']])
+	    }
+        }
      }
      post {
         always {
