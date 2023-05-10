@@ -1,5 +1,12 @@
 pipeline {
     agent any
+    environment {
+	GRADLE_HOME = "/opt/gradle/gradle-8.1"
+	GRADLE_BIN = '$GRADLE_HOME/bin'
+	JAVA_HOME = "/usr/lib/jvm/java-11-openjdk-amd64"
+	JAVA_BIN = '$JAVA_HOME/bin'
+	PATH = '$JAVA_HOME/bin:$GRADLE_BIN:$PATH'
+    }
     stages {
         stage('Levanta Web') {
             steps {
