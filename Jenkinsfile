@@ -4,7 +4,7 @@ pipeline {
         stage('Levanta Web') {
             steps {
                 echo 'Generando imagen'
-		sh 'docker build -t webcontainer $WORKSPACE"'
+		sh 'docker build -t webcontainer $WORKSPACE'
 		echo 'Arrancando contenedor web'
 		sh 'docker run --name webprueba -p 80:80 -d webcontainer'
             }
