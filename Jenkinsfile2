@@ -24,10 +24,9 @@ pipeline {
 	stage('Descarga y lanza selenium tests'){
 	    steps {
 		checkout scmGit(branches: [[name: '*/main']], extensions: [], userRemoteConfigs: [[url: 'https://github.com/sepu/testwebtest.git']])
-		withGradle(gradle: "gradle-8.1", JDK: "jdk1.8",	gradleProperties: "gradle.properties", gradleCacheDir: ".gradle/caches/") {
-    			sh 'gradle clean'
-                	sh 'gradle build'		
-		}
+    		sh 'gradle clean'
+               	sh 'gradle build'
+		sh 'export PATH=$JAVA_HOME/bin:$GRADLE_BIN:$PATH'		
 	    }
         }
      }
