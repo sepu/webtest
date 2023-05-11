@@ -5,7 +5,7 @@ pipeline {
 	JAVA_HOME = "/usr/lib/jvm/java-11-openjdk-amd64"
     }
     tools {
-        gradle "GRADLE_LATEST"
+        gradle "Gradle 8.1"
     }
     stages {
         stage('Levanta Web') {
